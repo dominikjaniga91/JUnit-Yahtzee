@@ -40,6 +40,16 @@ public enum Categories {
                     .filter(number -> number==4)
                     .reduce(0,Integer::sum);
         }
+    },
+
+    FIVES {
+        @Override
+        int getSumOfDice(Map<Integer, Integer> thrownDice) {
+            return thrownDice.values()
+                    .stream()
+                    .filter(number -> number==5)
+                    .reduce(0,Integer::sum);
+        }
     };
 
 
