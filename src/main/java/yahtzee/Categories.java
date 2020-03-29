@@ -157,6 +157,20 @@ public enum Categories {
             }
             return count == 4 ? 40 : 0;
         }
+    },
+
+    YAHTZEE{
+        @Override
+        int getSumOfDice(Map<Integer, Integer> thrownDice) {
+
+            int count = 0;
+            for (int i =2; i <= thrownDice.size(); i++) {
+                if(thrownDice.get(i - 1).equals(thrownDice.get(i))){
+                    count++;
+                }
+            }
+            return count == 4 ? 50 : 0;
+        }
     };
 
 

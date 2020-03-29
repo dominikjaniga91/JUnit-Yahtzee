@@ -96,4 +96,11 @@ public class YahtzeeGameTest {
         Assertions.assertThat(game.getScoreOfRound(thrownDice)).isEqualTo(40);
     }
 
+    @Test
+    @DisplayName("Result should be equals to 50 when player rolls Yahtzee")
+    void shouldReturnResult50_afterRollsYahtzee(){
+        Map<Integer, Integer> thrownDice = Map.of(1,2, 2,2, 3,2, 4,2, 5,2);
+        Assertions.assertThat(game.getScoreOfRound(thrownDice)).isEqualTo(50);
+    }
+
 }
