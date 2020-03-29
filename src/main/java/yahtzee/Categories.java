@@ -108,28 +108,28 @@ public enum Categories {
         }
     },
 
-    FULL {
-        @Override
-        int getSumOfDice(Map<Integer, Integer> thrownDice) {
-
-            List<Integer> elementOfDice = List.of(1,2,3,4,5,6);
-            int score = 0;
-            long theSameNumber = 0;
-            for (int element: elementOfDice) {
-
-                theSameNumber += thrownDice.values()
-                        .stream().filter(number -> number == element).count();
-
-                if(theSameNumber == 5){
-                    score = 25;
-                    break;
-                }else{
-                    score = 0;
-                }
-            }
-            return score;
-        }
-    },
+//    FULL {
+//        @Override
+//        int getSumOfDice(Map<Integer, Integer> thrownDice) {
+//
+//            List<Integer> elementOfDice = List.of(1,2,3,4,5,6);
+//            int score = 0;
+//            long theSameNumber = 0;
+//            for (int element: elementOfDice) {
+//
+//                theSameNumber += thrownDice.values()
+//                        .stream().filter(number -> number == element).count();
+//
+//                if(theSameNumber == 5){
+//                    score = 25;
+//                    break;
+//                }else{
+//                    score = 0;
+//                }
+//            }
+//            return score;
+//        }
+//    },
 
     SMALL_STRIT{
         @Override
@@ -142,6 +142,20 @@ public enum Categories {
                 }
             }
             return count == 3 ? 30 : 0;
+        }
+    },
+
+    LARGE_STRIT{
+        @Override
+        int getSumOfDice(Map<Integer, Integer> thrownDice) {
+
+            int count = 0;
+            for (int i =2; i <= thrownDice.size(); i++) {
+                if(thrownDice.get(i - 1) + 1 == thrownDice.get(i)){
+                    count++;
+                }
+            }
+            return count == 4 ? 40 : 0;
         }
     };
 
