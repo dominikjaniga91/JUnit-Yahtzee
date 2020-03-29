@@ -71,6 +71,13 @@ public class YahtzeeGameTest {
         Assertions.assertThat(game.getScoreOfRound(thrownDice)).isEqualTo(21);
     }
 
+    @Test
+    @DisplayName("Result should be equals to sum of all dice when player rolls 4 the same and 1 different ")
+    void shouldReturnResultSumOfDice_afterRolls4TheSameAnd1DifferentDice(){
+        Map<Integer, Integer> thrownDice = Map.of(1,5, 2,5, 3,5, 5,5, 6,4);
+        Assertions.assertThat(game.getScoreOfRound(thrownDice)).isEqualTo(24);
+    }
+
 
 
 }

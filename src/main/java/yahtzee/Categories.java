@@ -68,6 +68,28 @@ public enum Categories {
         @Override
         int getSumOfDice(Map<Integer, Integer> thrownDice) {
 
+            List<Integer> elementOfDice = List.of(1, 2, 3, 4, 5, 6);
+            int score = 0;
+            for (int element : elementOfDice) {
+
+                long theSameNumber = thrownDice.values()
+                        .stream().filter(number -> number == element).count();
+
+                if (theSameNumber == 3) {
+                    score = thrownDice.values().stream().reduce(0, Integer::sum);
+                    break;
+                } else {
+                    score = 0;
+                }
+            }
+            return score;
+        }
+    },
+
+    FOUR_THE_SAME {
+        @Override
+        int getSumOfDice(Map<Integer, Integer> thrownDice) {
+
             List<Integer> elementOfDice = List.of(1,2,3,4,5,6);
             int score = 0;
             for (int element: elementOfDice) {
@@ -75,14 +97,14 @@ public enum Categories {
                 long theSameNumber =thrownDice.values()
                         .stream().filter(number -> number == element).count();
 
-               if(theSameNumber == 3){
-                   score = thrownDice.values().stream().reduce(0,Integer::sum);
-                   break;
-               }else{
-                   score = 0;
-               }
+                if(theSameNumber == 4){
+                    score = thrownDice.values().stream().reduce(0,Integer::sum);
+                    break;
+                }else{
+                    score = 0;
+                }
             }
-        return score;
+            return score;
         }
     };
 
