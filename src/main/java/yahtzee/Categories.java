@@ -1,5 +1,6 @@
 package yahtzee;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -108,28 +109,23 @@ public enum Categories {
         }
     },
 
-//    FULL {
-//        @Override
-//        int getSumOfDice(Map<Integer, Integer> thrownDice) {
-//
-//            List<Integer> elementOfDice = List.of(1,2,3,4,5,6);
-//            int score = 0;
-//            long theSameNumber = 0;
-//            for (int element: elementOfDice) {
-//
-//                theSameNumber += thrownDice.values()
-//                        .stream().filter(number -> number == element).count();
-//
-//                if(theSameNumber == 5){
-//                    score = 25;
-//                    break;
-//                }else{
-//                    score = 0;
-//                }
-//            }
-//            return score;
-//        }
-//    },
+    FULL {
+        @Override
+        int getSumOfDice(Map<Integer, Integer> thrownDice) {
+
+            List<Integer> elementOfDice = List.of(1,2,3,4,5,6);
+            List<Long> fullArray = new ArrayList<>();
+
+            for (int element: elementOfDice) {
+
+                long countTheSame = thrownDice.values()
+                        .stream().filter(number -> number == element).count();
+                fullArray.add(countTheSame);
+            }
+
+            return fullArray.contains(2L) && fullArray.contains(3L) ? 25 : 0;
+        }
+    },
 
     SMALL_STRIT{
         @Override
