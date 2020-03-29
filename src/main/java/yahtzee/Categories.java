@@ -1,5 +1,7 @@
 package yahtzee;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 public enum Categories {
@@ -59,6 +61,28 @@ public enum Categories {
                     .stream()
                     .filter(number -> number==6)
                     .reduce(0,Integer::sum);
+        }
+    },
+
+    THREE_THE_SAME {
+        @Override
+        int getSumOfDice(Map<Integer, Integer> thrownDice) {
+
+            List<Integer> elementOfDice = List.of(1,2,3,4,5,6);
+            int score = 0;
+            for (int element: elementOfDice) {
+
+                long theSameNumber =thrownDice.values()
+                        .stream().filter(number -> number == element).count();
+
+               if(theSameNumber == 3){
+                   score = thrownDice.values().stream().reduce(0,Integer::sum);
+                   break;
+               }else{
+                   score = 0;
+               }
+            }
+        return score;
         }
     };
 

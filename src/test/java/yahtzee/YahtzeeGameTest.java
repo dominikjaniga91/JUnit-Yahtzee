@@ -24,35 +24,35 @@ public class YahtzeeGameTest {
 
     @Test
     @DisplayName("Result should be equals to 3 when player rolls 4 dice each 1 and 2 different ")
-    void shouldReturnResultEighteen_afterRolls3x1And2DifferentDice(){
+    void shouldReturnResult4_afterRolls3x1And2DifferentDice(){
         Map<Integer, Integer> thrownDice = Map.of(1,1, 2,1, 3,1, 5,2, 6,1);
         Assertions.assertThat(game.getScoreOfRound(thrownDice)).isEqualTo(4);
     }
 
     @Test
     @DisplayName("Result should be equals to 6 when player rolls 3 dice each 2 and 2 different ")
-    void shouldReturnResultEighteen_afterRolls3x2And2DifferentDice(){
+    void shouldReturnResult6_afterRolls3x2And2DifferentDice(){
         Map<Integer, Integer> thrownDice = Map.of(1,2, 2,2, 3,2, 5,3, 6,1);
         Assertions.assertThat(game.getScoreOfRound(thrownDice)).isEqualTo(6);
     }
 
     @Test
     @DisplayName("Result should be equals to 9 when player rolls 3 dice each 3 and 2 different ")
-    void shouldReturnResultEighteen_afterRolls3x3And2DifferentDice(){
+    void shouldReturnResult9_afterRolls3x3And2DifferentDice(){
         Map<Integer, Integer> thrownDice = Map.of(1,3, 2,3, 3,3, 5,2, 6,1);
         Assertions.assertThat(game.getScoreOfRound(thrownDice)).isEqualTo(9);
     }
 
     @Test
     @DisplayName("Result should be equals to 12 when player rolls 3 dice each 4 and 2 different ")
-    void shouldReturnResultTwelve_afterRolls3x4And2DifferentDice(){
+    void shouldReturnResult12_afterRolls3x4And2DifferentDice(){
         Map<Integer, Integer> thrownDice = Map.of(1,4, 2,4, 3,4, 5,2, 6,1);
         Assertions.assertThat(game.getScoreOfRound(thrownDice)).isEqualTo(12);
     }
 
     @Test
     @DisplayName("Result should be equals to 15 when player rolls 3 dice each 5 and 2 different ")
-    void shouldReturnResultTwelve_afterRolls3x5And2DifferentDice(){
+    void shouldReturnResult15_afterRolls3x5And2DifferentDice(){
         Map<Integer, Integer> thrownDice = Map.of(1,5, 2,5, 3,5, 5,2, 6,1);
         Assertions.assertThat(game.getScoreOfRound(thrownDice)).isEqualTo(15);
     }
@@ -63,6 +63,14 @@ public class YahtzeeGameTest {
         Map<Integer, Integer> thrownDice = Map.of(1,6, 2,6, 3,6, 5,2, 6,1);
         Assertions.assertThat(game.getScoreOfRound(thrownDice)).isEqualTo(18);
     }
+
+    @Test
+    @DisplayName("Result should be equals to sum of all dice when player rolls 3 the same and 2 different ")
+    void shouldReturnResultSumOfDice_afterRolls3TheSameAnd2DifferentDice(){
+        Map<Integer, Integer> thrownDice = Map.of(1,6, 2,6, 3,6, 5,2, 6,1);
+        Assertions.assertThat(game.getScoreOfRound(thrownDice)).isEqualTo(21);
+    }
+
 
 
 }
