@@ -78,6 +78,13 @@ public class YahtzeeGameTest {
         Assertions.assertThat(game.getScoreOfRound(thrownDice)).isEqualTo(24);
     }
 
+    @Test
+    @DisplayName("Result should be equals to 25 when player rolls full - dice are two of a kind and three of a kind  ")
+    void shouldReturnResult25_afterRollsFull(){
+        Map<Integer, Integer> thrownDice = Map.of(1,5, 2,5, 3,5, 5,2, 6,2);
+        Assertions.assertThat(game.getScoreOfRound(thrownDice)).isEqualTo(25);
+    }
+
 
 
 }

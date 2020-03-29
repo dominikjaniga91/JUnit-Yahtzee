@@ -106,6 +106,29 @@ public enum Categories {
             }
             return score;
         }
+    },
+
+    FULL {
+        @Override
+        int getSumOfDice(Map<Integer, Integer> thrownDice) {
+
+            List<Integer> elementOfDice = List.of(1,2,3,4,5,6);
+            int score = 0;
+            long theSameNumber = 0;
+            for (int element: elementOfDice) {
+
+                theSameNumber += thrownDice.values()
+                        .stream().filter(number -> number == element).count();
+
+                if(theSameNumber == 5){
+                    score = 25;
+                    break;
+                }else{
+                    score = 0;
+                }
+            }
+            return score;
+        }
     };
 
 
